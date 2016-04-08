@@ -7,7 +7,7 @@ var db = require('./index.js'),
 
 
 var smalldata = {
-  employees : [{name: 'Larry'}, {name: 'Moe'}, {name: 'Curly'}, {name: 'Shemp'}],
+  employees : [{name: 'Larry'}, {name: 'Moe'}, {name: 'Curly'}, {name: 'Shemp'}, {name: 'Lenny'}],
   products : [{name: 'foo'}, {name: 'bar'}, {name: 'bazz'}]
 };
 

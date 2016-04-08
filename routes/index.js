@@ -8,8 +8,16 @@ function startsWith(startsWith, model){
 }
 
 router.param('type',function(req,res,next,type){
-  req.model = models[type];
-  next();
+  if (models[type]){
+    req.model = models[type];
+    next();
+  }
+  else {
+    var error = new Error("404 page not found");
+    error.status = 404;
+    next(error);
+  }
+
 });
 
 router.route('/:type')
