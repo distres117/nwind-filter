@@ -7,8 +7,8 @@ var db = require('./index.js'),
 
 
 var smalldata = {
-  employees : [{name: 'Larry'}, {name: 'Moe'}, {name: 'Curly'}, {name: 'Shemp'}, {name: 'Lenny'}],
-  products : [{name: 'foo'}, {name: 'bar'}, {name: 'bazz'}]
+  employees : [{name: 'Lenny'}, {name: 'Moe'}, {name: 'Curly'}, {name: 'Shemp'}, {name: 'Larry'}, {name: 'Zeke'}],
+  products : [{name: 'Foo'}, {name: 'Bar'}, {name: 'Bazz'}]
 };
 
 
@@ -28,9 +28,7 @@ function seed(){
 }
 
 if(!process.env.TESTING){
-  seed().then(function(){
-    process.exit(0);
-  });
+  return seed();
 }
 
 module.exports = seed;

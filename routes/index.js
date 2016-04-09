@@ -2,9 +2,22 @@ var router = require('express').Router(),
   mongoose = require('mongoose'),
   models = {products: require('../db/products'), employees: require('../db/employees')};
 
-function startsWith(startsWith, model){
-    var re = new RegExp('^' + startsWith);
-    return model.find({name: re });
+function startsWith(_startsWith, model){
+    var re = new RegExp('^' + _startsWith);
+    return model.find({name: re },null, {sort: {name: 1}});
+}
+
+function getAll(model){
+  return model.find().then(function(instances){
+    var hash = {};
+    for(var i = 65; i < 91; i++ ){
+      var char = String.fromCharCode(i);
+      var filtered = instances.filter(it=>it.name[0]===char);
+      if (filtered.length)
+        hash[char] = filtered.sort((l,c)=> l.name.localeCompare(c.name));
+    }
+    return hash;
+  });
 }
 
 router.param('type',function(req,res,next,type){
@@ -22,8 +35,8 @@ router.param('type',function(req,res,next,type){
 
 router.route('/:type')
   .get(function(req,res,next){
-    req.model.find().then(function(instances){
-      res.json(instances);
+    getAll(req.model).then(function(hash){
+      res.json(hash);
     }, next);
   });
 
