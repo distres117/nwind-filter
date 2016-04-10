@@ -12,7 +12,7 @@ angular.module('app', ['ui.router'])
       template: '<tab-view></tabview>'
     })
     .state('filteredView', {
-      url: '/:type/:key',
+      url: '/:type/:key?p',
       template: '<tab-view></tab-view>'
     });
 

@@ -3,7 +3,9 @@ angular.module('app')
   return {
     scope: {
       data: '=',
-      type: '='
+      items: '=',
+      type: '=',
+      key: '='
     },
     templateUrl: '/app/partials/filter.partial.html',
     controller: function($scope){
@@ -25,10 +27,23 @@ angular.module('app')
   return {
     templateUrl: '/app/partials/comp.partial.html',
     controller: function(ApiFactory, $scope, $stateParams){
-      ApiFactory.getData().then(function(data){
+      ApiFactory.getData($stateParams.type).then(function(data){
       $scope.data = data;
-      $scope.type = $stateParams.type;
       $scope.key = $stateParams.key;
+      $scope.type = $stateParams.type;
+      var pNum = Number($stateParams.p) -1;
+      var items = data[$scope.key];
+      var NUM_PAGES = 5;
+      if (items)
+        $scope.items = items.slice(pNum * NUM_PAGES, (pNum * NUM_PAGES) + NUM_PAGES  );
+
+      $scope.pages = function(){
+        var i = 0, p = [];
+        while(i++ < $scope.data[$scope.key].length / NUM_PAGES)
+          p.push(i);
+        return p;
+      };
+
 
       });
     }

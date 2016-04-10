@@ -3,7 +3,8 @@ var db = require('./index.js'),
   Promise = require('bluebird'),
   Product = require('./products'),
   Employee = require('./employees'),
-  chalk = require('chalk');
+  chalk = require('chalk'),
+  faker = require('faker');
 
 
 var smalldata = {
@@ -11,24 +12,36 @@ var smalldata = {
   products : [{name: 'Foo'}, {name: 'Bar'}, {name: 'Bazz'}]
 };
 
-
 function seed(){
   return db().then(function(){
     return Promise.join(Employee.remove(), Product.remove());
   })
   .then(function(){
-    if (process.env.SMALL){
-      console.log(chalk.magenta('Seeding small...'));
-      return Promise.join(Employee.insertMany(smalldata.employees), Product.insertMany(smalldata.products));
-    }
+    var seedData;
+    if (process.env.SMALL)
+      seedData = smalldata;
     else {
-      return Promise.resolve();
+      seedData = {
+        employees: [],
+        products: []
+      };
+      var i = 100;
+      while(i--){
+        seedData.employees.push({name: faker.name.findName()});
+        seedData.products.push({name: faker.commerce.productName()});
+      }
     }
+    console.log(seedData);
+    console.log(chalk.magenta('Seeding...'));
+    return Promise.join(Employee.insertMany(seedData.employees), Product.insertMany(seedData.products));
+  })
+  .catch(function(err){
+    console.log(err);
   });
 }
 
 if(!process.env.TESTING){
-  return seed();
+  seed().then(()=>process.exit(0));
 }
 
 module.exports = seed;

@@ -1,5 +1,5 @@
 <div class="well" id="filter_box">
-    <div ui-sref="filteredView({type: type, key: link})" ng-class="{disabled: !data[link]}" ng-repeat="link in links" id="letter_link">
+    <div ui-sref="filteredView({type: type, key: link, p: 1})" ng-class="{disabled: !data[link], selected: link===key}" ng-repeat="link in links" id="letter_link">
       <span id="letter">{{link}}</span>
     </div>
 </div>

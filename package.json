@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "TESTING=true SMALL=true nodemon --exec mocha",
-    "start": "nodemon server.js",
-    "seed-small": "SMALL=true node db/seed.js"
+    "start": "node server.js",
+    "seed-small": "SMALL=true node db/seed.js",
+    "seed": "node db/seed.js",
+    "postinstall" : "npm run seed"
   },
   "author": "",
   "license": "ISC",

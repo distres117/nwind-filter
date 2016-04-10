@@ -1,6 +1,6 @@
 module.exports = function(app){
   app.all('/*', function(req, res) {
-   res.sendfile(app.get('root') + '/public/index.html');
+   res.sendFile(app.get('root') + '/public/index.html');
  });
   // app.use(function(req, res, next){
   //   var error = new Error('404 Page Not Found');

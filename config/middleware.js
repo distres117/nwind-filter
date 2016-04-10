@@ -3,8 +3,9 @@ var morgan = require('morgan'),
   bodyParser = require('body-parser');
 
 module.exports = function(app){
+  var publicFolder = __dirname + '/../public';
   app.use(bodyParser.json());
-  app.use(express.static(__dirname + '/../public'));
+  app.use(express.static(publicFolder));
   app.use(morgan('dev'));
-  //add serve favicon
+  app.use(require('serve-favicon')(publicFolder + '/favicon.ico'));
 };
