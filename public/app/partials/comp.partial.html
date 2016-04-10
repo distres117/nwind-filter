@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs" id="tabs-pane">
+    <li ng-class="{active: type === 'products'}"><a ui-sref="itemsView({type: 'products'})" role="tab">Products </a></li>
+    <li ng-class="{active: type === 'employees'}"><a ui-sref="itemsView({type: 'employees'})" role="tab">Employees </a></li>
+</ul>
+  <filter-panel type="type" data="data[type]"></filter-panel>
+  <div class='well' ng-show="!key">
+    <span>No filter selected</span>
+  </div>
+  <row-panel items="data[type][key]"></row-panel>

@@ -7,11 +7,18 @@ div#letter_link{
   font-size:x-large;
   text-align:center;
   line-height:40px;
+  cursor: pointer;
+}
+.disabled{
+  background: grey !important;
+  pointer-events: none;
+  cursor: default !important;
 }
 
 div#filter_box{
   display:flex;
   flex-direction:row;
+  flex-wrap: wrap;
 }
 
 div#iterm-row.row{
@@ -31,4 +38,3 @@ div#header{
 ul#tabs-pane.nav.nav-tabs{
   margin:10px;
 }
-

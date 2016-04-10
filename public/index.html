@@ -2,30 +2,22 @@
 <html>
 
 <head>
+  <base href="/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>nwind-filter</title>
+    <title>Northwind Filter</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
+<body ng-app="app">
     <div class="jumbotron" id="header">
-        <h1>NorthWind Filter</h1>
+        <h1><i>NorthWind Filter</i></h1>
         <p></p>
     </div>
     <div class="container">
         <div>
-            <ul class="nav nav-tabs" id="tabs-pane">
-                <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Products </a></li>
-                <li><a href="#tab-2" role="tab" data-toggle="tab">Employees </a></li>
-            </ul>
-            <div class="tab-content">
-
-                <div class="tab-pane" role="tabpanel" id="tab-2">
-                    <p>Second tab content.</p>
-                </div>
-            </div>
+            <ui-view></ui-view>
         </div>
     </div>
     <script src="assets/js/jquery.min.js"></script>
@@ -33,7 +25,6 @@
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/app/app.js"></script>
-    <script src="/app/controllers.js"></script>
     <script src="/app/directives.js"></script>
     <script src="/app/factories.js"></script>
 </body>
