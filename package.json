@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "TESTING=true SMALL=true nodemon --exec mocha",
+    "test-client": "./node_modules/.bin/karma start",
     "start": "node server.js",
     "seed-small": "SMALL=true node db/seed.js",
     "seed": "node db/seed.js",
-    "postinstall" : "npm run seed"
+    "postinstall": "npm run seed"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +24,13 @@
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
+    "angular-mocks": "^1.5.3",
     "chai": "^3.5.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8",
+    "karma-spec-reporter": "0.0.26",
     "supertest": "^1.2.0",
     "supertest-as-promised": "^3.1.0"
   }
