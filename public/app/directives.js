@@ -31,6 +31,7 @@ angular.module('app')
       $scope.data = data;
       $scope.key = $stateParams.key;
       $scope.type = $stateParams.type;
+      $scope.pNum = $stateParams.p;
       var pNum = Number($stateParams.p) -1;
       var items = data[$scope.key];
       var NUM_PAGES = 5;

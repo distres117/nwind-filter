@@ -8,9 +8,9 @@
   </div>
   <row-panel items="items"></row-panel>
   <div ng-if="key">
-    <nav>
-      <ul class="pager">
-        <li ng-repeat="page in pages()"><a ui-sref="filteredView({type: type, key: key, p: page})">{{page}}</a></li>
+    <nav class="text-center">
+      <ul class="pagination">
+        <li ng-repeat="page in pages()" ng-class="{active: page==pNum}"><a ui-sref="filteredView({type: type, key: key, p: page})">{{page}}</a></li>
       </ul>
     </nav>
   </div>
