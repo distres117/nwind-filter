@@ -19,7 +19,8 @@ module.exports = function(config) {
       'public/bower_components/angular-ui-router/release/angular-ui-router.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'public/app/*.js',
-      'public/tests/*.js'
+      'public/tests/*.js',
+      'public/app/partials/*.html'
     ],
 
 
@@ -31,6 +32,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'public/app/partials/*.html': ['ng-html2js']
+    },
+    ngHtml2JsPreprocessor : {
+      stripPrefix: 'public',
+      moduleName: 'app.views'
     },
 
 
